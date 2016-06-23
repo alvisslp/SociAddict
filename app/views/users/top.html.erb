@@ -1,0 +1,30 @@
+<h1>Top users</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Referrals number</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @top.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.referrals.size %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= form_for(:user, url: top_path) do |f| %>
+
+    <%= f.label :top %>
+    <%= f.text_field :top, class: 'form-control' %>
+
+    <%= f.submit "search", class: "btn btn-primary" %>
+<% end %>

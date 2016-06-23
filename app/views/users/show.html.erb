@@ -5,12 +5,13 @@
   <%= @user.name %>
 <br />
   <strong>Referrer:</strong>
-  <% unless @user.referrer.nil? %>
+  <% referrer = @user.referrer %>
+  <% unless referrer.nil? %>
     <tr>
-      <td><%= @user.referrer.name %></td>
-      <td><%= link_to 'Show', @user.referrer %></td>
-      <td><%= link_to 'Edit', edit_user_path(@user.referrer) %></td>
-      <td><%= link_to 'Destroy', @user.referrer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= referrer.name %></td>
+      <td><%= link_to 'Show', referrer %></td>
+      <td><%= link_to 'Edit', edit_user_path(referrer) %></td>
+      <td><%= link_to 'Destroy', referrer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 <br />
@@ -23,6 +24,15 @@
       <td><%= link_to 'Destroy', referral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
+  <br />
+  <strong>Original:</strong>
+  <tr>
+    <% original = @user.original %>
+    <td><%= original.name %></td>
+    <td><%= link_to 'Show', original %></td>
+    <td><%= link_to 'Edit', edit_user_path(original) %></td>
+    <td><%= link_to 'Destroy', original, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
 </p>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |

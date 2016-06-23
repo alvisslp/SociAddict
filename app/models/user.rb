@@ -38,8 +38,8 @@ class User < ActiveRecord::Base
   end
 
   def self.more_or_equal_to(x)
-    return User.all if x == 0
-    more_than(x - 1)
+    return User.all if x.to_i == 0
+    more_than(x.to_i - 1)
   end
 
   def self.no_referrals

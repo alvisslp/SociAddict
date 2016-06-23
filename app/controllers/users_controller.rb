@@ -5,8 +5,28 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
-    @top = []
-    @top = User.top(params[:user][:top]) unless params or params[:user] or params[:user][:top]
+  end
+
+  # GET /top
+  # POST /top
+  def top
+    @top = (params and params[:user] and params[:user][:top] != '') ? User.top(params[:user][:top]) : []
+  end
+
+  def none
+    @users = User.no_referrals
+  end
+
+  def more
+    @more = []
+
+    if params and params[:user]
+      if params[:user][:more_than]
+        @more = User.more_than(params[:user][:more_than])
+      elsif params[:user][:more_or_equal_to]
+        @more = User.more_or_equal_to(params[:user][:more_or_equal_to])
+      end
+    end
   end
 
   # GET /users/1

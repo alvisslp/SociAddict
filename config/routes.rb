@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   root 'users#index'
+
+  get 'top' => 'users#top'
+  post 'top' => 'users#top'
+
+  get 'more' => 'users#more'
+  post 'more' => 'users#more'
+
+  get 'none' => 'users#none'
+
   resources :users
 
   # The priority is based upon order of creation: first created -> highest priority.
