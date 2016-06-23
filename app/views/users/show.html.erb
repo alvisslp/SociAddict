@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+<br />
+  <strong>Referrer:</strong>
+  <% unless @user.referrer.nil? %>
+    <tr>
+      <td><%= @user.referrer.name %></td>
+      <td><%= link_to 'Show', @user.referrer %></td>
+      <td><%= link_to 'Edit', edit_user_path(@user.referrer) %></td>
+      <td><%= link_to 'Destroy', @user.referrer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+<br />
+  <strong>Referrals:</strong>
+  <% @user.referrals.each do |referral| %>
+    <tr>
+      <td><%= referral.name %></td>
+      <td><%= link_to 'Show', referral %></td>
+      <td><%= link_to 'Edit', edit_user_path(referral) %></td>
+      <td><%= link_to 'Destroy', referral, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
