@@ -1,0 +1,33 @@
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <%= f.fields_for :referrer do |ref_fields| %>
+    <div class="field">
+      <%= ref_fields.label :Referrer %><br>
+      <%= ref_fields.text_field :name %>
+    </div>
+  <% end %>
+  <% if @user.referrer.nil? %>
+    <div class="field">
+      <%= f.label :Referrer %><br>
+      <%= f.text_field :referrer %>
+    </div>
+  <% end %>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
