@@ -72,8 +72,8 @@ class UserTest < ActiveSupport::TestCase
 
   test 'should be original' do
     assert_equal(@user1.original, @user, '@user not original of @user1')
-    assert_equal(@user2.original, @user, '@user2 referral de @user')
-    assert_equal(@user3.original, @user, '@user2 referral de @user')
+    assert_equal(@user2.original, @user, '@user2 not original of @user')
+    assert_equal(@user3.original, @user, '@user2 not original of @user')
   end
 
   test 'should not be original' do
