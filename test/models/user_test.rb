@@ -18,6 +18,13 @@ class UserTest < ActiveSupport::TestCase
     @user1.referrals << @user4
     @user1.referrals << @user5
     @user2.referrals << @user6
+    @user.reload
+    @user1.reload
+    @user2.reload
+    @user3.reload
+    @user4.reload
+    @user5.reload
+    @user6.reload
   end
 
   test 'Should be referral' do
@@ -64,7 +71,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test 'should be original' do
-    assert_equal(@user1.original, @user, '@user1 referral de @user')
+    assert_equal(@user1.original, @user, '@user not original of @user1')
     assert_equal(@user2.original, @user, '@user2 referral de @user')
     assert_equal(@user3.original, @user, '@user2 referral de @user')
   end
